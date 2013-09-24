@@ -5,11 +5,17 @@ package:
 source:
   fn: hdf5-1.8.11.tar.bz2
   url: http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.11/src/hdf5-1.8.11.tar.bz2
-  md5: 33e105583417eff1c57fff910a53cd6f
+  md5: 3433c1be767d2b8e5b0771a3209b4fcc
 
 build:
-  number: 2            [osx]
+  number: 0            [osx]
 
 about:
   home: http://www.hdfgroup.org/HDF5/
   license: BSD-style (http://www.hdfgroup.org/ftp/HDF5/current/src/unpacked/COPYING)
+
+requirements:
+  build:
+    - zlib
+  run:
+    - zlib

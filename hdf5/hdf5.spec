@@ -1,6 +1,6 @@
 
 Name:		hdf5
-Version:	1.8.9
+Version:	1.8.11
 Release:	1%{?dist}
 Summary:	A general purpose library and file format for storing scientific data
 
