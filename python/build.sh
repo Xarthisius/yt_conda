@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #rm -r Modules/expat
-rm -r Modules/_ctypes/libffi*
+#rm -r Modules/_ctypes/libffi*
 rm -r Modules/zlib
 
 ./configure \
