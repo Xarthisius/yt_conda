@@ -1,0 +1,15 @@
+package:
+  name: openssl
+  version: 1.0.1e
+
+source:
+  fn:  openssl-1.0.1e.tar.gz
+  url: http://www.openssl.org/source/openssl-1.0.1e.tar.gz
+  md5: 66bf6f10f060d561929de96f9dfe5b8c
+
+build:
+  number: 0            [osx]
+
+about:
+  home: http://www.openssl.org/
+  license: openssl
