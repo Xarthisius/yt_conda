@@ -8,7 +8,7 @@ export PATH="$PWD/yt-conda/bin:$PATH"
 conda build --no-binstar-upload zlib
 conda install yt-conda/conda-bld/linux-64/zlib-*.tar.bz2
 conda build --no-binstar-upload bzip2
-conda install yt-conda/conda-bld/linux-64/bzip-*.tar.bz2
+conda install yt-conda/conda-bld/linux-64/bzip2-*.tar.bz2
 conda build --no-binstar-upload ncurses
 conda install yt-conda/conda-bld/linux-64/ncurses-*.tar.bz2
 
