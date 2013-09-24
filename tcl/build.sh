@@ -12,33 +12,29 @@ autoconf
 ./configure 
 
 make -j4
-
-local v1=8.6
-local mylibdir=lib
-
 make install DESTDIR="${PREFIX}"
 # fix the tclConfig.sh to eliminate refs to the build directory
 # and drop unnecessary -L inclusion to default system libdir
-
+v1=8.6
 sed \
    -e "/^TCL_BUILD_LIB_SPEC=/s:-L${SPARENT}.*unix *::g" \
-   -e "/^TCL_LIB_SPEC=/s:-L${EPREFIX}/usr/${mylibdir} *::g" \
-   -e "/^TCL_SRC_DIR=/s:${SPARENT}:${PREFIX}/${mylibdir}/tcl${v1}/include:g" \
+   -e "/^TCL_LIB_SPEC=/s:-L${EPREFIX}/usr/lib *::g" \
+   -e "/^TCL_SRC_DIR=/s:${SPARENT}:${PREFIX}/lib/tcl${v1}/include:g" \
    -e "/^TCL_BUILD_STUB_LIB_SPEC=/s:-L${SPARENT}.*unix *::g" \
-   -e "/^TCL_STUB_LIB_SPEC=/s:-L${EPREFIX}/usr/${mylibdir} *::g" \
-   -e "/^TCL_BUILD_STUB_LIB_PATH=/s:${SPARENT}.*unix:${PREFIX}/${mylibdir}:g" \
+   -e "/^TCL_STUB_LIB_SPEC=/s:-L${EPREFIX}/usr/lib *::g" \
+   -e "/^TCL_BUILD_STUB_LIB_PATH=/s:${SPARENT}.*unix:${PREFIX}/lib:g" \
    -e "/^TCL_LIB_FILE=/s:'libtcl${v1}..TCL_DBGX..so':\"libtcl${v1}\$\{TCL_DBGX\}.so\":g" \
-   -i "${PREFIX}"/${mylibdir}/tclConfig.sh
+   -i "${PREFIX}"/lib/tclConfig.sh
 
 # install private headers
-mkdir -p "$PREFIX"/${mylibdir}/tcl${v1}/include/unix
-cp *.h "$PREFIX"/${mylibdir}/tcl${v1}/include/unix
-mkdir -p "$PREFIX"/${mylibdir}/tcl${v1}/include/generic
+mkdir -p "$PREFIX"/lib/tcl${v1}/include/unix
+cp *.h "$PREFIX"/lib/tcl${v1}/include/unix
+mkdir -p "$PREFIX"/lib/tcl${v1}/include/generic
 cp "${SPARENT}"/generic/*.h
-rm -f "${PREFIX}"/${mylibdir}/tcl${v1}/include/generic/{tcl,tclDecls,tclPlatDecls}.h
+rm -f "${PREFIX}"/lib/tcl${v1}/include/generic/{tcl,tclDecls,tclPlatDecls}.h
 
 # install symlink for libraries
-#dosym libtcl${v1}$(get_libname) /usr/${mylibdir}/libtcl$(get_libname)
-#dosym libtclstub${v1}.a /usr/${mylibdir}/libtclstub.a
-#
-#dosym tclsh${v1} /usr/bin/tclsh
+ln -s libtcl${v1}$(get_libname) "${PREFIX}"/lib/libtcl$(get_libname)
+ln -s libtclstub${v1}.a "${PREFIX}"/lib/libtclstub.a
+
+ln -s tclsh${v1} "${PREFIX}"/bin/tclsh
