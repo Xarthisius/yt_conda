@@ -5,11 +5,9 @@ rm -rf yt-conda
 bash ${CONDABIN} -b -p $PWD/yt-conda
 export PATH="$PWD/yt-conda/bin:$PATH"
 
-conda build --no-binstar-upload zlib
-conda install yt-conda/conda-bld/linux-64/zlib-*.tar.bz2
-conda build --no-binstar-upload bzip2
-conda install yt-conda/conda-bld/linux-64/bzip2-*.tar.bz2
-conda build --no-binstar-upload ncurses
-conda install yt-conda/conda-bld/linux-64/ncurses-*.tar.bz2
+for pkg in zlib bzip2 ncurses openssl readline; do
+   conda build --no-binstar-upload ${pkg}
+   conda install yt-conda/conda-bld/linux-64/${pkg}-*.tar.bz2
+done
 
 conda list
