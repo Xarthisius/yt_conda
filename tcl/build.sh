@@ -9,19 +9,19 @@ find \
 	"${SPARENT}"/doc/try.n \
 	-delete
 autoconf
-./configure 
+./configure --prefix="${PREFIX}"
 
 make -j4
-make install DESTDIR="${PREFIX}"
+make install
 # fix the tclConfig.sh to eliminate refs to the build directory
 # and drop unnecessary -L inclusion to default system libdir
 v1=8.6
 sed \
    -e "/^TCL_BUILD_LIB_SPEC=/s:-L${SPARENT}.*unix *::g" \
-   -e "/^TCL_LIB_SPEC=/s:-L${EPREFIX}/usr/lib *::g" \
+   -e "/^TCL_LIB_SPEC=/s:-L${PREFIX}/lib *::g" \
    -e "/^TCL_SRC_DIR=/s:${SPARENT}:${PREFIX}/lib/tcl${v1}/include:g" \
    -e "/^TCL_BUILD_STUB_LIB_SPEC=/s:-L${SPARENT}.*unix *::g" \
-   -e "/^TCL_STUB_LIB_SPEC=/s:-L${EPREFIX}/usr/lib *::g" \
+   -e "/^TCL_STUB_LIB_SPEC=/s:-L${PREFIX}/lib *::g" \
    -e "/^TCL_BUILD_STUB_LIB_PATH=/s:${SPARENT}.*unix:${PREFIX}/lib:g" \
    -e "/^TCL_LIB_FILE=/s:'libtcl${v1}..TCL_DBGX..so':\"libtcl${v1}\$\{TCL_DBGX\}.so\":g" \
    -i "${PREFIX}"/lib/tclConfig.sh
@@ -30,7 +30,7 @@ sed \
 mkdir -p "$PREFIX"/lib/tcl${v1}/include/unix
 cp *.h "$PREFIX"/lib/tcl${v1}/include/unix
 mkdir -p "$PREFIX"/lib/tcl${v1}/include/generic
-cp "${SPARENT}"/generic/*.h
+cp "${SPARENT}"/generic/*.h "$PREFIX"/lib/tcl${v1}/include/generic
 rm -f "${PREFIX}"/lib/tcl${v1}/include/generic/{tcl,tclDecls,tclPlatDecls}.h
 
 # install symlink for libraries
