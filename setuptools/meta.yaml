@@ -1,0 +1,18 @@
+package:
+  name: setuptools
+  version: 1.1.6
+
+source:
+  fn:  setuptools-1.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/s/setuptools/setuptools-1.1.6.tar.gz
+  md5: ee82ea53def4480191061997409d2996
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+about:
+  home: https://pypi.python.org/pypi/setuptools
+  license: PSF
