@@ -1,0 +1,18 @@
+package:
+  name: libpng
+  version: 1.6.5
+
+source:
+  fn: libpng-1.6.5.tar.gz
+  url: http://download.sourceforge.net/libpng/libpng-1.6.5.tar.gz 
+  md5: d219454052b3930c5d1eebd2f79e6540 
+
+about:
+  home: http://www.libpng.org
+  license: Apache
+
+requirements:
+  build:
+    - zlib
+  run:
+    - zlib
