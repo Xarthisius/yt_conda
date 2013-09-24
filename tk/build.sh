@@ -12,7 +12,10 @@ autoconf
    --enable-threads \
    --disable-xft \
    --disable-xss \
-   --enable-shared
+   --enable-shared \
+   CFLAGS="-I${PREFIX}/include" \
+   LDFLAGS="-L${PREFIX}/lib"
+
 
 make -j4
 make install
