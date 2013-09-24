@@ -5,7 +5,7 @@ rm -rf yt-conda
 bash ${CONDABIN} -b -p $PWD/yt-conda
 export PATH="$PWD/yt-conda/bin:$PATH"
 
-for pkg in zlib bzip2 ncurses openssl readline; do
+for pkg in zlib bzip2 ncurses openssl libffi readline; do
    conda build --no-binstar-upload ${pkg}
    conda install yt-conda/conda-bld/linux-64/${pkg}-*.tar.bz2
 done
