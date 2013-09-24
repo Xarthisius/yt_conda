@@ -1,0 +1,20 @@
+package:
+  name: freetype
+  version: 2.4.12 
+
+source:
+  fn: freetype-2.4.12.tar.gz
+  url: http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.gz 
+  md5: e3057079a9bb96d7ebf9afee3f724653 
+
+about:
+  home: http://www.freetype.org/ 
+  license: FTL GPL-2+ 
+
+requirements:
+  build:
+    - zlib
+    - bzip2
+  run:
+    - zlib
+    - bzip2
