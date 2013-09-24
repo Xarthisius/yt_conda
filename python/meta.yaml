@@ -1,0 +1,32 @@
+package:
+  name: python
+  version: 2.7.5
+
+source:
+  fn: Python-2.7.5.tar.xz
+  url: http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tar.xz
+  md5: 5eea8462f69ab1369d32f9c4cd6272ab
+
+about:
+  home: http://www.python.org/ 
+  license: PSF-2
+
+requirements:
+  build:
+    - libffi
+    - openssl
+    - readline
+    - ncurses
+    - sqlite
+    - tk
+    - zlib
+    - bzip2
+  run:
+    - libffi
+    - openssl
+    - readline
+    - ncurses
+    - sqlite
+    - tk
+    - zlib
+    - bzip2
