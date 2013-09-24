@@ -14,4 +14,4 @@ make -j1 depend
 make
 make rehash
 make install
-find . -name "*.a"
+find "${PREFIX}" -name "*.a" -delete
