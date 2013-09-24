@@ -1,3 +1,3 @@
 ./configure --prefix=$PREFIX
-make
+make -j9
 make install

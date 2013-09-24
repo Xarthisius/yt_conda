@@ -4,7 +4,7 @@
     --enable-linux-lfs --with-zlib=$PREFIX --enable-shared \
     --enable-production --disable-silent-rules \
     --disable-parallel
-make
+make -j9
 make install
 
 rm -rf $PREFIX/share/hdf5_examples
