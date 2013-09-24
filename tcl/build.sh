@@ -1,9 +1,9 @@
 #!/bin/bash
 
 MY_P=tcl8.6.1
-SPARENT=${PWD}/${MY_P}
+SPARENT=${PWD}
 
-cd ${SPARENT}/unix
+cd unix
 find \
 	"${SPARENT}"/compat/* \
 	"${SPARENT}"/doc/try.n \
