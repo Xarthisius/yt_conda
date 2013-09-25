@@ -1,0 +1,16 @@
+package:
+  name: blas
+  version: 3.4.2
+
+source:
+  fn: lapack-3.4.2.tgz
+  url: http://www.netlib.org/lapack/lapack-3.4.2.tgz
+  md5: 61bf1a8a4469d4bdb7604f5897179478
+
+about:
+  home: http://www.netlib.org/lapack/
+  license: BSD
+
+#requirements:
+# build:
+#    - cmake
