@@ -1,0 +1,18 @@
+package:
+  name: six
+  version: 1.4.1
+
+source:
+  fn: six-1.4.1.tar.gz 
+  url: https://pypi.python.org/packages/source/s/six/six-1.4.1.tar.gz
+  md5: bdbb9e12d3336c198695aa4cf3a61d62
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+about:
+  home: http://pypi.python.org/pypi/six/ 
+  license: MIT
