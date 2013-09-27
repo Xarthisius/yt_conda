@@ -16,5 +16,5 @@ requirements:
     - coverage
 
 about:
-  home: http://nedbatchelder.com/code/coverage 
-  license: BSD
+  home: http://readthedocs.org/docs/nose/
+  license: LGPL
