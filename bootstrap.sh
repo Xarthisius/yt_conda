@@ -12,7 +12,7 @@ done
 
 conda create -n py_yt python -c http://tinyurl.com/yt-conda --override-channels
 source activate py_yt
-for pkg in setuptools numpy; do
+for pkg in setuptools numpy cython mercurial; do
    conda build --no-binstar-upload ${pkg}
    conda install yt-conda/conda-bld/linux-64/${pkg}-*.tar.bz2
 done
