@@ -1,0 +1,16 @@
+package:
+  name: coverage
+  version: 3.6.0
+
+source:
+  fn: coverage-3.6.0.tar.gz 
+  url: https://pypi.python.org/packages/source/c/coverage/coverage-3.6.tar.gz
+  md5: 67d4e393f4c6a5ffc18605409d2aa1ac 
+
+requirements:
+  build:
+    - setuptools
+
+about:
+  home: http://nedbatchelder.com/code/coverage 
+  license: BSD
