@@ -1,0 +1,21 @@
+package:
+  name: numpy
+  version: 1.7.1
+
+source:
+  fn: numpy-1.7.1.tar.gz
+  url: http://prdownloads.sourceforge.net/numpy/numpy-1.7.1.tar.gz
+  md5: 0ab72b3b83528a7ae79c6df9042d61c6
+
+requirements:
+  build:
+    - lapack
+    - setuptools
+    - bzip2
+  run:
+    - python
+    - lapack
+
+about:
+  home: http://www.numpy.org/
+  license: BSD
