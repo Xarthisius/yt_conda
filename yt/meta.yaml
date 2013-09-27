@@ -1,0 +1,41 @@
+package:
+  name: yt
+  version: 2.5.5
+
+source:
+  fn: yt-2.5.5.tar.gz
+  url: https://pypi.python.org/packages/source/y/yt/yt-2.5.5.tar.gz
+  md5: 1b497061d1b7ee0859caec1c8a1ef2e2
+
+build:
+  entry_points:
+    - yt = yt.utilities.command_line:run_main
+
+requirements:
+  build:
+    - python
+    - numpy
+    - cython
+    - libpng
+    - freetype
+    - hdf5
+    - setuptools
+  run:
+    - python
+    - numpy
+    - libpng
+    - freetype
+    - hdf5
+    - h5py
+#    - matplotlib
+
+test:
+  commands:
+    - yt -h
+  imports:
+    - yt
+    - yt.utilities.hdf5_light_reader
+
+about:
+  home: http://yt-project.org/
+  license: BSD
