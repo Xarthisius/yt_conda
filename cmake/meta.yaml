@@ -14,3 +14,11 @@ test:
 about:
   home: http://www.cmake.org/
   license: BSD
+
+requirements:
+  build:
+    - zlib
+    - bzip2
+  run:
+    - zlib
+    - bzip2
