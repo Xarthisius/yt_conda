@@ -27,7 +27,7 @@ requirements:
     - freetype
     - hdf5
     - h5py
-#    - matplotlib
+    - matplotlib
 
 test:
   commands:
