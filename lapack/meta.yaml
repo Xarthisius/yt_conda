@@ -13,6 +13,7 @@ about:
 
 requirements:
   build:
+    - cmake
     - blas
   run:
     - blas

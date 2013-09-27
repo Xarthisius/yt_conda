@@ -11,6 +11,6 @@ about:
   home: http://www.netlib.org/lapack/
   license: BSD
 
-#requirements:
-# build:
-#    - cmake
+requirements:
+  build:
+    - cmake
