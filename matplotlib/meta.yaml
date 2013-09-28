@@ -18,6 +18,7 @@ requirements:
     - pyparsing
     - python-dateutil
     - pytz
+    - tornado
   run:
     - python
     - freetype
@@ -28,6 +29,7 @@ requirements:
     - pyparsing
     - python-dateutil
     - pytz
+    - tornado
 
 about:
   home: http://matplotlib.org/
