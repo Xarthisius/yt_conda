@@ -1,0 +1,89 @@
+--- Makefile
++++ Makefile
+@@ -21,7 +21,7 @@ RANLIB=ranlib
+ LDFLAGS=
+ 
+ BIGFILES=-D_FILE_OFFSET_BITS=64
+-CFLAGS=-Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS=-Wall -fPIC -DPIC -Winline -O2 -g $(BIGFILES)
+ 
+ # Where you want it installed when you do 'make install'
+ PREFIX=/usr/local
+@@ -55,12 +55,12 @@ libbz2.a: $(OBJS)
+ check: test
+ test: bzip2
+ 	@cat words1
+-	./bzip2 -1  < sample1.ref > sample1.rb2
+-	./bzip2 -2  < sample2.ref > sample2.rb2
+-	./bzip2 -3  < sample3.ref > sample3.rb2
+-	./bzip2 -d  < sample1.bz2 > sample1.tst
+-	./bzip2 -d  < sample2.bz2 > sample2.tst
+-	./bzip2 -ds < sample3.bz2 > sample3.tst
++	DYLD_LIBRARY_PATH=. ./bzip2 -1  < sample1.ref > sample1.rb2
++	DYLD_LIBRARY_PATH=. ./bzip2 -2  < sample2.ref > sample2.rb2
++	DYLD_LIBRARY_PATH=. ./bzip2 -3  < sample3.ref > sample3.rb2
++	DYLD_LIBRARY_PATH=. ./bzip2 -d  < sample1.bz2 > sample1.tst
++	DYLD_LIBRARY_PATH=. ./bzip2 -d  < sample2.bz2 > sample2.tst
++	DYLD_LIBRARY_PATH=. ./bzip2 -ds < sample3.bz2 > sample3.tst
+ 	cmp sample1.bz2 sample1.rb2 
+ 	cmp sample2.bz2 sample2.rb2
+ 	cmp sample3.bz2 sample3.rb2
+@@ -87,17 +87,16 @@ install: bzip2 bzip2recover
+ 	chmod a+r $(PREFIX)/man/man1/bzip2.1
+ 	cp -f bzlib.h $(PREFIX)/include
+ 	chmod a+r $(PREFIX)/include/bzlib.h
+-	cp -f libbz2.a $(PREFIX)/lib
+-	chmod a+r $(PREFIX)/lib/libbz2.a
++	cp -f libbz2.*.dylib $(PREFIX)/lib
+ 	cp -f bzgrep $(PREFIX)/bin/bzgrep
+-	ln -s -f $(PREFIX)/bin/bzgrep $(PREFIX)/bin/bzegrep
+-	ln -s -f $(PREFIX)/bin/bzgrep $(PREFIX)/bin/bzfgrep
++	ln -s -f bzgrep $(PREFIX)/bin/bzegrep
++	ln -s -f bzgrep $(PREFIX)/bin/bzfgrep
+ 	chmod a+x $(PREFIX)/bin/bzgrep
+ 	cp -f bzmore $(PREFIX)/bin/bzmore
+-	ln -s -f $(PREFIX)/bin/bzmore $(PREFIX)/bin/bzless
++	ln -s -f bzmore $(PREFIX)/bin/bzless
+ 	chmod a+x $(PREFIX)/bin/bzmore
+ 	cp -f bzdiff $(PREFIX)/bin/bzdiff
+-	ln -s -f $(PREFIX)/bin/bzdiff $(PREFIX)/bin/bzcmp
++	ln -s -f bzdiff $(PREFIX)/bin/bzcmp
+ 	chmod a+x $(PREFIX)/bin/bzdiff
+ 	cp -f bzgrep.1 bzmore.1 bzdiff.1 $(PREFIX)/man/man1
+ 	chmod a+r $(PREFIX)/man/man1/bzgrep.1
+--- Makefile-libbz2_so
++++ Makefile-libbz2_so
+@@ -24,7 +24,7 @@
+ SHELL=/bin/sh
+ CC=gcc
+ BIGFILES=-D_FILE_OFFSET_BITS=64
+-CFLAGS=-fpic -fPIC -Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS=-fpic -fPIC -DPIC -Wall -Winline -O2 -g $(BIGFILES)
+ 
+ OBJS= blocksort.o  \
+       huffman.o    \
+@@ -34,14 +34,18 @@ OBJS= blocksort.o  \
+       decompress.o \
+       bzlib.o
+ 
+-all: $(OBJS)
+-	$(CC) -shared -Wl,-soname -Wl,libbz2.so.1.0 -o libbz2.so.1.0.6 $(OBJS)
+-	$(CC) $(CFLAGS) -o bzip2-shared bzip2.c libbz2.so.1.0.6
+-	rm -f libbz2.so.1.0
+-	ln -s libbz2.so.1.0.6 libbz2.so.1.0
++libbz2.dylib: $(OBJS)
++	rm -f libbz2.dylib
++	$(CC) -dynamiclib $(OBJS) -o libbz2.1.0.6.dylib \
++		-install_name $(PREFIX)/lib/libbz2.1.0.dylib \
++		-compatibility_version 1.0 -current_version 1.0.6
++	ln -s libbz2.1.0.6.dylib libbz2.dylib
++
++all: libbz2.dylib
++	$(CC) $(CFLAGS) -o bzip2-shared bzip2.c libbz2.1.0.6.dylib
+ 
+ clean: 
+-	rm -f $(OBJS) bzip2.o libbz2.so.1.0.6 libbz2.so.1.0 bzip2-shared
++	rm -f $(OBJS) bzip2.o libbz2.1.0.6.dylib libbz2.dylib bzip2-shared
+ 
+ blocksort.o: blocksort.c
+ 	$(CC) $(CFLAGS) -c blocksort.c
