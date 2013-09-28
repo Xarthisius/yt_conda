@@ -1,0 +1,18 @@
+package:
+  name: decorator 
+  version: 3.4.0
+
+source:
+  fn: decorator-3.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/decorator/decorator-3.4.0.tar.gz
+  md5: 1e8756f719d746e2fc0dd28b41251356 
+
+requirements:
+  build:
+    - setuptools
+  run:
+    - setuptools
+
+about:
+  home: http://pypi.python.org/pypi/decorator
+  license: BSD
