@@ -7,6 +7,8 @@ export PATH="$PWD/yt-conda/bin:$PATH"
 
 export CBLD="conda build --no-binstar-upload"
 
+export STAGE1=1
+
 if [[ -n $STAGE1 ]] ; then
    ${CBLD} zlib
    ${CBLD} bzip2
