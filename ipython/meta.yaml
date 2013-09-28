@@ -1,0 +1,37 @@
+package:
+  name: ipython
+  version: 1.0.0
+
+source:
+  fn: ipython-1.0.0.tar.gz
+  url: https://github.com/ipython/ipython/releases/download/rel-1.0.0/ipython-1.0.0.tar.gz
+  md5: 2268fa83f257d14943eb04e3333a6fac
+
+requirements:
+  build:
+    - decorator
+    - pexpect
+    - setuptools
+    - simplegeneric
+    - pyparsing
+    - matplotlib
+    - pygments
+  run:
+    - decorator
+    - pexpect
+    - setuptools
+    - simplegeneric
+    - pyparsing
+    - matplotlib
+    - pygments
+    - tornado
+    - pyzmq
+    - jinja2
+
+test:
+  imports:
+    - IPython.html.notebookapp
+
+about:
+  home: http://ipython.org/
+  license: BSD
