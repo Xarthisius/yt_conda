@@ -3,9 +3,13 @@ package:
   version: 0.8.1
 
 source:
-  fn: simplegeneric-0.8.1.tar.gz
+  fn: simplegeneric-0.8.1.zip
   url: https://pypi.python.org/packages/source/s/simplegeneric/simplegeneric-0.8.1.zip
   md5: f9c1fab00fd981be588fc32759f474e3 
+
+test:
+  imports:
+    - simplegeneric
 
 requirements:
   build:
