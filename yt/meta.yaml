@@ -20,6 +20,7 @@ requirements:
     - freetype
     - hdf5
     - setuptools
+    - forthon
   run:
     - python
     - numpy
