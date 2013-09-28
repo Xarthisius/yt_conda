@@ -1,0 +1,12 @@
+package:
+  name: zeromq
+  version: 3.2.4
+
+source:
+  fn: zeromq-3.2.4.tar.gz
+  url: http://download.zeromq.org/zeromq-3.2.4.tar.gz
+  md5: 39af2d41e3fb744b98d7999e291e05dc
+
+about:
+  home: http://www.zeromq.org/
+  license: LGPL-3
