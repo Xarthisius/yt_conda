@@ -7,22 +7,24 @@ export PATH="$PWD/yt-conda/bin:$PATH"
 
 export CBLD="conda build --no-binstar-upload"
 
-${CBLD} zlib
-${CBLD} bzip2
-${CBLD} cmake
-${CBLD} ncurses
-${CBLD} openssl
-${CBLD} readline
-${CBLD} sqlite
-${CBLD} tcl
-${CBLD} tk
-${CBLD} libpng
-${CBLD} blas
-${CBLD} lapack
-${CBLD} hdf5
-${CBLD} freetype
-${CBLD} zeromq
-${CBLD} python
+if [[ -n $STAGE1 ]] ; then
+   ${CBLD} zlib
+   ${CBLD} bzip2
+   ${CBLD} cmake
+   ${CBLD} ncurses
+   ${CBLD} openssl
+   ${CBLD} readline
+   ${CBLD} sqlite
+   ${CBLD} tcl
+   ${CBLD} tk
+   ${CBLD} libpng
+   ${CBLD} blas
+   ${CBLD} lapack
+   ${CBLD} hdf5
+   ${CBLD} freetype
+   ${CBLD} zeromq
+   ${CBLD} python
+fi
 
 conda create -n py_yt python -c http://tinyurl.com/yt-conda --override-channels
 source activate py_yt
@@ -45,6 +47,8 @@ ${CBLD} markupsafe
 ${CBLD} pyparsing
 ${CBLD} jinja2
 ${CBLD} python-dateutil
+${CBLD} pytz
+${CBLD} tornado
 ${CBLD} matplotlib
 ${CBLD} ipython
 ${CBLD} forthon
