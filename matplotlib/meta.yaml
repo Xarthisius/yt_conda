@@ -15,6 +15,9 @@ requirements:
     - libpng
     - six
     - nose
+    - pyparsing
+    - python-dateutil
+    - pytz
   run:
     - python
     - freetype
@@ -22,8 +25,11 @@ requirements:
     - libpng
     - six
     - nose
+    - pyparsing
+    - python-dateutil
+    - pytz
 
 about:
-  home: http://www.numpy.org/
-  license: BSD
+  home: http://matplotlib.org/
+  license: matplotlib BSD
 
