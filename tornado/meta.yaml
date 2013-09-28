@@ -1,0 +1,18 @@
+package:
+  name: tornado
+  version: 3.1.1
+
+source:
+  fn: tornado-3.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornado/tornado-3.1.1.tar.gz
+  md5: 901e4f24b9e840860f6095451aa75828
+
+requirements:
+  build:
+    - setuptools
+  run:
+    - setuptools
+
+about:
+  home: http://www.tornadoweb.org/
+  license: Apache-2.0
