@@ -44,6 +44,7 @@ ${CBLD} pyzmq
 ${CBLD} markupsafe
 ${CBLD} pyparsing
 ${CBLD} jinja2
+${CBLD} python-dateutil
 ${CBLD} matplotlib
 ${CBLD} ipython
 ${CBLD} forthon
