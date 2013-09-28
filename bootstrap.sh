@@ -5,15 +5,33 @@ rm -rf yt-conda
 bash ${CONDABIN} -b -p $PWD/yt-conda
 export PATH="$PWD/yt-conda/bin:$PATH"
 
-for pkg in zlib bzip2 ncurses openssl readline sqlite tcl tk libpng hdf5 blas lapack python cmake freetype; do
-   conda build --no-binstar-upload ${pkg}
-   conda install yt-conda/conda-bld/linux-64/${pkg}-*.tar.bz2
-done
+export CBLD="conda build --no-binstar-upload"
+
+${CBLD} zlib
+${CBLD} bzip2
+${CBLD} cmake
+${CBLD} ncurses
+${CBLD} openssl
+${CBLD} readline
+${CBLD} sqlite
+${CBLD} tcl
+${CBLD} tk
+${CBLD} libpng
+${CBLD} blas
+${CBLD} lapack
+${CBLD} hdf5
+${CBLD} freetype
+${CBLD} zeromq
+${CBLD} python
 
 conda create -n py_yt python -c http://tinyurl.com/yt-conda --override-channels
 source activate py_yt
-for pkg in setuptools numpy cython mercurial h5py coverage nose six matplotlib yt; do
-   conda build --no-binstar-upload ${pkg}
+for pkg in setuptools cython numpy mercurial h5py coverage nose six; do
+   ${CBLD} ${pkg}
+   conda install yt-conda/conda-bld/linux-64/${pkg}-*.tar.bz2
+done
+for pkg in decorator pexpect simplegeneric pygments pyzmq jinja2 matplotlib ipython yt; do
+   ${CBLD} ${pkg}
    conda install yt-conda/conda-bld/linux-64/${pkg}-*.tar.bz2
 done
 
