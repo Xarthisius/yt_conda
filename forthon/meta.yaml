@@ -1,0 +1,19 @@
+package:
+  name: forthon
+  version: 0.8.12
+
+source:
+  fn: Forthon-0.8.12.tgz
+  url: http://hifweb.lbl.gov/Forthon/Forthon-0.8.12.tgz
+  md5: 0aee82e8c86ac92fb8a0d54fef6eb801
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+about:
+  home: http://hifweb.lbl.gov/Forthon
+  license: BSD
