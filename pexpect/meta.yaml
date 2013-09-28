@@ -1,0 +1,12 @@
+package:
+  name: pexpect
+  version: 2.4
+
+source:
+  fn: pexpect-2.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/pexpect/pexpect-2.4.tar.gz
+  md5: fe82d69be19ec96d3a6650af947d5665 
+
+about:
+  home: http://pexpect.sourceforge.net/
+  license: MIT
