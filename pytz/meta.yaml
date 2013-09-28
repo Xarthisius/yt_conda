@@ -7,7 +7,7 @@ source:
   url: https://pypi.python.org/packages/source/p/pytz/pytz-2013d.tar.gz
   md5: ee090b586c792bcf393c84dd0a75c9b5
 
-requires:
+requirements:
    build:
       - setuptools
    run:
