@@ -26,13 +26,25 @@ ${CBLD} python
 
 conda create -n py_yt python -c http://tinyurl.com/yt-conda --override-channels
 source activate py_yt
-for pkg in setuptools cython numpy mercurial h5py coverage nose six; do
-   ${CBLD} ${pkg}
-   conda install yt-conda/conda-bld/linux-64/${pkg}-*.tar.bz2
-done
-for pkg in decorator pexpect simplegeneric pygments pyzmq jinja2 matplotlib ipython yt; do
-   ${CBLD} ${pkg}
-   conda install yt-conda/conda-bld/linux-64/${pkg}-*.tar.bz2
-done
-
-conda list
+${CBLD} setuptools
+${CBLD} cython
+${CBLD} numpy
+${CBLD} mercurial
+${CBLD} coverage
+${CBLD} six
+${CBLD} nose
+${CBLD} decorator
+${CBLD} pexpect
+${CBLD} simplegeneric
+${CBLD} h5py
+${CBLD} coverage
+${CBLD} nose
+${CBLD} pygments
+${CBLD} pyzmq
+${CBLD} markupsafe
+${CBLD} pyparsing
+${CBLD} jinja2
+${CBLD} matplotlib
+${CBLD} ipython
+${CBLD} forthon
+${CBLD} yt
